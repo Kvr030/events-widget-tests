@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page, expect
 
 
@@ -14,12 +15,18 @@ class EventsWidget:
         ).last
 
     def navigate(self):
-        """Переход на страницу"""
-        self.page.goto(self.url)
+        """Открыть страницу"""
+        with allure.step("Открыть страницу Events Widget"):
+            self.page.goto(self.url)
+        return self
 
     def switch_to_en(self):
         """Переключение на английский через hover + клик"""
-        self.dropdown_toggle.hover()
-        self.page.wait_for_timeout(1000)  # Даём время появиться меню
-        self.lang_en.click()
-        self.page.wait_for_timeout(2000)
+        with allure.step("Навести курсор на дропдаун языка"):
+            self.dropdown_toggle.hover()
+
+        with allure.step("Кликнуть по английскому языку"):
+            self.lang_en.click()
+
+        with allure.step("Подождать загрузки страницы после смены языка"):
+            self.page.wait_for_load_state("networkidle")
