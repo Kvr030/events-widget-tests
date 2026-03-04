@@ -38,9 +38,9 @@
 - Allure Reports
 - GitHub Actions (CI/CD)
 
-##  Установка и запуск
+##  Установка 
 
-```bash
+```
 # Клонируем
 git clone https://github.com/Kvr030/events-widget-tests.git
 cd events-widget-tests
@@ -55,11 +55,29 @@ pip install -r requirements.txt
 
 # Устанавливаем браузеры Playwright
 playwright install chromium
+```
+##  Запуск
+```
+Вариант 1:Headless режим для CI или быстрого прогона
 
-# Запускаем тесты
 pytest --alluredir=allure-results
 
-# Смотрим отчёт локально (требуется Allure CLI)
+Вариант 2: С видимым браузером для отладки
+
+pytest --headed --alluredir=allure-results
+
+Вариант 3: С замедлением чтобы видеть каждый шаг
+
+pytest --headed --slowmo=1000 --alluredir=allure-results
+```
+
+### Просмотр Allure-отчёта локально
+
+```bash
+# Установи Allure CLI (если ещё нет)
+# https://allurereport.org/docs/install/
+
+Сгенерируй и открой отчёт
 allure serve allure-results
 ```
 
