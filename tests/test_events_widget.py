@@ -11,13 +11,15 @@ def test_page_loads(events_widget):
     """
     events_widget.navigate()
 
-    expect(events_widget.page).to_have_title("Конструктор календаря мероприятий - 3Snet")
+    expect(events_widget.page).to_have_title(
+        "Конструктор календаря мероприятий - 3Snet"
+    )
 
     title = events_widget.page.title()
     allure.attach(
         f"Title страницы: {title}",
         name="Информация о заголовке",
-        attachment_type=allure.attachment_type.TEXT
+        attachment_type=allure.attachment_type.TEXT,
     )
 
 
@@ -37,5 +39,5 @@ def test_switch_to_english(events_widget):
     allure.attach(
         f"URL после переключения: {final_url}",
         name="URL после переключения",
-        attachment_type=allure.attachment_type.TEXT
+        attachment_type=allure.attachment_type.TEXT,
     )

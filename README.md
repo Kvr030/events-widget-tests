@@ -88,7 +88,7 @@ allure serve allure-results
 1. Перейдите в репозиторий на GitHub
 2. Откройте вкладку **Actions**
 3. Выберите workflow **"Run Tests with Allure Report"**
-4. Нажмите **"Run workflow"** → выберите окружение → **"Run workflow"**
+4. Нажмите **"Run workflow"** 
 
 ##  Просмотр отчётов
 
