@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"1ba36992035b2c5e04b09d82f00f176b","name":"Загрузка страницы","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"df4f9e976e022064df4322536e6de4d2","name":"Переключение языка","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
