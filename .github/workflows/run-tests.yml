@@ -9,9 +9,9 @@ permissions:
   id-token: write
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
-    name: Run tests and publish Allure report
+    name: Run tests and generate Allure results
 
     steps:
       - name: Checkout repository
@@ -37,30 +37,44 @@ jobs:
           pytest --alluredir=allure-results
         continue-on-error: true
 
-      - name: Get Allure history
-        uses: actions/checkout@v4
+      - name: Upload Allure results
         if: always()
-        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+
+  publish-report:
+    if: always()
+    needs: run-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages
 
-      - name: Generate Allure Report
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Generate Allure Report with history
         uses: simple-elf/allure-report-action@master
         if: always()
-        id: allure-report
         with:
           allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          report_url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          allure_history: allure-history
+          keep_reports: 20
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy report to Github Pages
         if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-report
-          destination_dir: ${{ github.run_number }}
+          publish_dir: allure-history
           keep_files: true
