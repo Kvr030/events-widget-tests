@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+Тест 2: Переключение языка на английский
+","0","test_switch_to_english[chromium]","tests","Wed Mar 04 17:43:52 UTC 2026","broken","Wed Mar 04 17:43:52 UTC 2026","","test_events_widget","",""
+"
+Тест 1: Проверка загрузки страницы
+","0","test_page_loads[chromium]","tests","Wed Mar 04 17:43:51 UTC 2026","broken","Wed Mar 04 17:43:51 UTC 2026","","test_events_widget","",""
