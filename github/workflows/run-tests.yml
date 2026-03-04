@@ -1,6 +1,5 @@
 name: Run Tests with Allure Report
 
-# Запуск по кнопке в GitHub (веб-интерфейс)
 on:
   workflow_dispatch:
     inputs:
@@ -13,7 +12,6 @@ on:
           - dev
           - staging
 
-# Разрешения для GitHub Pages
 permissions:
   contents: write
   pages: write
