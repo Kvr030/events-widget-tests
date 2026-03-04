@@ -2,15 +2,6 @@ name: Run Tests with Allure Report
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Test environment'
-        required: true
-        default: 'dev'
-        type: choice
-        options:
-          - dev
-          - staging
 
 permissions:
   contents: write
